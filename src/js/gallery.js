@@ -28,6 +28,12 @@ const onSearchFormSubmit = async event => {
         'Sorry, there are no images matching your search query. Please try again.'
       );
       loadMoreBtnEl.style.display = 'none';
+    } else if (data.totalHits <= 40) {
+      Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
+
+      makeMarkup(data.hits);
+      lightbox.refresh();
+      loadMoreBtnEl.style.display = 'none';
     } else {
       Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
 
